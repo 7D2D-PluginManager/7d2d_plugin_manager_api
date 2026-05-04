@@ -88,6 +88,7 @@
         <Compile Include="Contracts\GeoIpData.cs" />
         <Compile Include="Contracts\PlayerKillingMode.cs" />
         <Compile Include="Contracts\RespawnType.cs" />
+        <Compile Include="Contracts\TileEntity.cs" />
         <Compile Include="Contracts\TileEntityType.cs" />
         <Compile Include="Contracts\Vector3.cs" />
         <Compile Include="Contracts\Vector3Int.cs" />

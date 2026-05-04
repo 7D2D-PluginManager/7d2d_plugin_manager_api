@@ -5,15 +5,11 @@ namespace PluginManager.Api.Capabilities.Implementations.Events.GameEvents;
 
 public class TileEntityAccessAttemptEvent(
     int entityId,
-    int tileEntityId,
-    TileEntityType tileEntityType,
-    Vector3Int tileEntityPosition
+    TileEntity tileEntity
 ) : ProxyObject, IGameEvent
 {
     public string EventName => nameof(TileEntityAccessAttemptEvent);
 
     public int EntityId { get; set; } = entityId;
-    public int TileEntityId { get; set; } = tileEntityId;
-    public TileEntityType TileEntityType { get; set; } = tileEntityType;
-    public Vector3Int TileEntityPosition { get; set; } = tileEntityPosition;
+    public TileEntity TileEntity { get; set; } = tileEntity;
 }
