@@ -53,6 +53,7 @@
         <Compile Include="Capabilities\Implementations\Events\GameEvents\EntityDamageEvent.cs" />
         <Compile Include="Capabilities\Implementations\Events\GameEvents\EntityKilledEvent.cs" />
         <Compile Include="Capabilities\Implementations\Events\GameEvents\GameAwakeEvent.cs" />
+        <Compile Include="Capabilities\Implementations\Events\GameEvents\GameMessageEvent.cs" />
         <Compile Include="Capabilities\Implementations\Events\GameEvents\GameShutdownEvent.cs" />
         <Compile Include="Capabilities\Implementations\Events\GameEvents\GameStartingEvent.cs" />
         <Compile Include="Capabilities\Implementations\Events\GameEvents\GameUpdateEvent.cs" />
@@ -81,6 +82,7 @@
         <Compile Include="Contracts\ChatType.cs" />
         <Compile Include="Contracts\ClientInfo.cs" />
         <Compile Include="Contracts\EnumLandClaimOwner.cs" />
+        <Compile Include="Contracts\GameMessages.cs" />
         <Compile Include="Contracts\GamePrefs.cs" />
         <Compile Include="Contracts\GamePrefsType.cs" />
         <Compile Include="Contracts\GameStats.cs" />
