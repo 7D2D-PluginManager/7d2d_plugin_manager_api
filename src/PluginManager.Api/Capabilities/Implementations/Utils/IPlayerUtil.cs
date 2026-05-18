@@ -15,4 +15,5 @@ public interface IPlayerUtil : ICapability
     LandClaimOwner GetClaimOwner(int entityId, Vector3Int position);
     ClientInfo GetClientInfoByEntityId(int entityId);
     IEnumerable<ClientInfo> GetClientInfoList();
+    int GetPermissionLevelByEntityId(int entityId);
 }
