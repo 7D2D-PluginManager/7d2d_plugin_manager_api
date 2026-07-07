@@ -49,6 +49,7 @@
         <Compile Include="Capabilities\Implementations\Commands\ICommandManager.cs" />
         <Compile Include="Capabilities\Implementations\Commands\ICommandRegistry.cs" />
         <Compile Include="Capabilities\Implementations\Events\GameEvents\ChatMessageEvent.cs" />
+        <Compile Include="Capabilities\Implementations\Events\GameEvents\ContainerClosedEvent.cs" />
         <Compile Include="Capabilities\Implementations\Events\GameEvents\CreateWorldDoneEvent.cs" />
         <Compile Include="Capabilities\Implementations\Events\GameEvents\EntityDamageEvent.cs" />
         <Compile Include="Capabilities\Implementations\Events\GameEvents\EntityKilledEvent.cs" />
@@ -74,6 +75,8 @@
         <Compile Include="Capabilities\Implementations\GeoIp\IGeoIpDataStorage.cs" />
         <Compile Include="Capabilities\Implementations\Language\IPlayerLanguageStore.cs" />
         <Compile Include="Capabilities\Implementations\Logger\ILogger.cs" />
+        <Compile Include="Capabilities\Implementations\Utils\IClaimUtil.cs" />
+        <Compile Include="Capabilities\Implementations\Utils\IContainerUtil.cs" />
         <Compile Include="Capabilities\Implementations\Utils\IGamePrefsUtil.cs" />
         <Compile Include="Capabilities\Implementations\Utils\IGameStatsUtil.cs" />
         <Compile Include="Capabilities\Implementations\Utils\IGameUtil.cs" />
@@ -83,6 +86,7 @@
         <Compile Include="Contracts\ClientInfo.cs" />
         <Compile Include="Contracts\EnumLandClaimOwner.cs" />
         <Compile Include="Contracts\GameMessages.cs" />
+        <Compile Include="Contracts\LandClaim.cs" />
         <Compile Include="Contracts\GamePrefs.cs" />
         <Compile Include="Contracts\GamePrefsType.cs" />
         <Compile Include="Contracts\GameStats.cs" />
