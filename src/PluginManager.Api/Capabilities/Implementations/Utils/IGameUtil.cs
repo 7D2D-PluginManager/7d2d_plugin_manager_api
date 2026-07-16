@@ -8,4 +8,7 @@ public interface IGameUtil : ICapability
     int WorldTimeToHours(ulong worldTime);
     int WorldTimeToMinutes(ulong worldTime);
     bool IsBloodMoonActive();
+    void SaveWorld();
+    void SavePlayerData();
+    void ShutdownServer();
 }
