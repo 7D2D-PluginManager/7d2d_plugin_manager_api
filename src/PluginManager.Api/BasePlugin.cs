@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using PluginManager.Api.Capabilities;
 using PluginManager.Api.Capabilities.Implementations.Commands;
 using PluginManager.Api.Capabilities.Implementations.Events;
 using PluginManager.Api.Capabilities.Implementations.Logger;
+using PluginManager.Api.Capabilities.Implementations.Storage;
 using PluginManager.Api.Hooks;
 using PluginManager.Api.Proxy;
 
@@ -16,20 +18,30 @@ public abstract class BasePlugin : IPlugin
     public abstract string ModuleVersion { get; }
     public abstract string ModuleAuthor { get; }
     public abstract string ModuleDescription { get; }
-    public string ModulePath { get; set; }
+
+    protected string Id { get; private set; }
+    protected string RootDirectory { get; private set; }
+    protected string ConfigDirectory => Path.Combine(RootDirectory, "Config");
+    protected string LangDirectory => Path.Combine(RootDirectory, "Lang");
+    protected string ConfigPath => Path.Combine(ConfigDirectory, Id + ".json");
 
     protected ICapabilityRegistry Capabilities { get; private set; } = null!;
     protected ILogger Log => Capabilities.Get<ILogger>();
     protected IEventHandlers Events => Capabilities.Get<IEventHandlers>();
     protected ICommandManager CommandManager => Capabilities.Get<ICommandManager>();
 
+    private PluginStorage _store;
+    protected PluginStorage Store => _store ??= new PluginStorage(Capabilities.Get<IStorage>(), Id);
+
     private readonly List<CommandDefinition> _registeredCommands = [];
     private readonly List<(DelegateProxy Proxy, Type EventType, HookMode Mode)> _registeredHandlers = [];
 
     private bool _disposed;
 
-    public void Load(ICapabilityRegistry registry)
+    public void Load(PluginContext context, ICapabilityRegistry registry)
     {
+        Id = context.Id;
+        RootDirectory = context.RootDirectory;
         Capabilities = registry;
         OnLoad();
     }

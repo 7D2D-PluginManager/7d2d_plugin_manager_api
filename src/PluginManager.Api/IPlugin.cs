@@ -24,16 +24,11 @@ public interface IPlugin : IDisposable
     /// Brief description of the plugin as it will appear in the plugin list.
     /// </summary>
     string ModuleDescription { get; }
-    
-    /// <summary>
-    /// The path to the plugin's DLL file.
-    /// </summary>
-    string ModulePath { get; set; }
 
     /// <summary>
     /// This method is called on plugin load and should be treated as plugin constructor.
     /// </summary>
-    void Load(ICapabilityRegistry registry);
+    void Load(PluginContext context, ICapabilityRegistry registry);
 
     /// <summary>
     /// Will be called on plugin unload. In this method the plugin should cleanup any extra resources.
