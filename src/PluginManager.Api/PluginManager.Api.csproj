@@ -85,6 +85,7 @@
         <Compile Include="Contracts\BbCodeSupportMode.cs" />
         <Compile Include="Contracts\ChatType.cs" />
         <Compile Include="Contracts\ClientInfo.cs" />
+        <Compile Include="Contracts\DroppedBackpack.cs" />
         <Compile Include="Contracts\EnumLandClaimOwner.cs" />
         <Compile Include="Contracts\GameMessages.cs" />
         <Compile Include="Contracts\LandClaim.cs" />

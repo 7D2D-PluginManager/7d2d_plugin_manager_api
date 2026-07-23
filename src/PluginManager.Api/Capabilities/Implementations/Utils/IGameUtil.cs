@@ -7,6 +7,8 @@ public interface IGameUtil : ICapability
     int WorldTimeToDays(ulong worldTime);
     int WorldTimeToHours(ulong worldTime);
     int WorldTimeToMinutes(ulong worldTime);
+    int WorldTimeToTotalMinutes(ulong worldTime);
+    int GetDayNightLength();
     bool IsBloodMoonActive();
     void SaveWorld();
     void SavePlayerData();

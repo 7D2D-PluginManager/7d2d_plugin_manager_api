@@ -8,4 +8,5 @@ public interface IContainerUtil : ICapability
     int[] GetContainerItemTypes(Vector3Int position);
     Vector3Int[] GetContainersInArea(Vector3Int min, Vector3Int max);
     int MoveItemType(Vector3Int source, Vector3Int target, int itemType);
+    DroppedBackpack GetDroppedBackpack(int entityId);
 }
