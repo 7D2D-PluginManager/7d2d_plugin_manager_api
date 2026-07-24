@@ -16,5 +16,6 @@ public interface IPlayerUtil : ICapability
     ClientInfo GetClientInfoByEntityId(int entityId);
     IEnumerable<ClientInfo> GetClientInfoList();
     int GetPermissionLevelByEntityId(int entityId);
+    bool AreInSameParty(string playerIdA, string playerIdB);
     bool AreFriends(string playerIdA, string playerIdB);
 }
