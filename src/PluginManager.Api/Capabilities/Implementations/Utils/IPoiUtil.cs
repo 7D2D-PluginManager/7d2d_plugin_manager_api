@@ -5,4 +5,5 @@ namespace PluginManager.Api.Capabilities.Implementations.Utils;
 public interface IPoiUtil : ICapability
 {
     Poi GetPoiAt(Vector3 position);
+    Poi[] GetPoisInArea(Vector3Int min, Vector3Int max);
 }
