@@ -14,6 +14,7 @@ public interface IPlayerUtil : ICapability
     Vector3 GetPlayerPosition(int entityId);
     LandClaimOwner GetClaimOwner(int entityId, Vector3Int position);
     ClientInfo GetClientInfoByEntityId(int entityId);
+    ClientInfo GetClientInfo(string nameOrId);
     IEnumerable<ClientInfo> GetClientInfoList();
     int GetPermissionLevelByEntityId(int entityId);
     bool AreInSameParty(string playerIdA, string playerIdB);

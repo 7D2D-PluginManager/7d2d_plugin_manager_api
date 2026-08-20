@@ -6,4 +6,5 @@ public interface IItemUtil : ICapability
 {
     ItemInfo GetItem(string name);
     bool SpawnItemInInventory(int entityId, string name, int count);
+    bool SpawnItemInInventory(int entityId, string name, int count, int quality);
 }

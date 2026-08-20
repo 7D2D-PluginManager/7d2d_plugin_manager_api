@@ -29,11 +29,13 @@ public abstract class BasePlugin : IPlugin
     protected ILogger Log => Capabilities.Get<ILogger>();
     protected IEventHandlers Events => Capabilities.Get<IEventHandlers>();
     protected ICommandManager CommandManager => Capabilities.Get<ICommandManager>();
+    protected IConsoleCommandManager ConsoleCommandManager => Capabilities.Get<IConsoleCommandManager>();
 
     private PluginStorage _store;
     protected PluginStorage Store => _store ??= new PluginStorage(Capabilities.Get<IStorage>(), Id);
 
     private readonly List<CommandDefinition> _registeredCommands = [];
+    private readonly List<ConsoleCommandDefinition> _registeredConsoleCommands = [];
     private readonly List<(DelegateProxy Proxy, Type EventType, HookMode Mode)> _registeredHandlers = [];
 
     private bool _disposed;
@@ -95,12 +97,39 @@ public abstract class BasePlugin : IPlugin
         _registeredCommands.Remove(definition);
     }
 
+    protected void RegisterConsoleCommand(string name, string description, string help, int defaultPermissionLevel,
+        Action<IConsoleCommandContext> callback)
+    {
+        var proxy = new DelegateProxy(callback);
+        var definition = new ConsoleCommandDefinition(name, description, help, defaultPermissionLevel, proxy);
+
+        ConsoleCommandManager.RegisterCommand(definition);
+        _registeredConsoleCommands.Add(definition);
+    }
+
+    protected void DeregisterConsoleCommand(string name)
+    {
+        var definition =
+            _registeredConsoleCommands.FirstOrDefault(cmd =>
+                string.Equals(cmd.Name, name, StringComparison.OrdinalIgnoreCase));
+
+        if (definition == null) return;
+        ConsoleCommandManager.DeregisterCommand(definition);
+        _registeredConsoleCommands.Remove(definition);
+    }
+
     private void DeregisterCommands()
     {
         foreach (var command in _registeredCommands.ToList())
         {
             CommandManager.DeregisterCommand(command);
             _registeredCommands.Remove(command);
+        }
+
+        foreach (var command in _registeredConsoleCommands.ToList())
+        {
+            ConsoleCommandManager.DeregisterCommand(command);
+            _registeredConsoleCommands.Remove(command);
         }
     }
 
